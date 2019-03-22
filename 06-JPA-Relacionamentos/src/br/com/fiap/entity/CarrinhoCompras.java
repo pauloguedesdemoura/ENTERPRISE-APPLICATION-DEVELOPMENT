@@ -1,10 +1,13 @@
 package br.com.fiap.entity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,10 +31,21 @@ public class CarrinhoCompras {
 	@GeneratedValue(generator = "carrinho", strategy = GenerationType.SEQUENCE)
 	private int codigo;
 	
-	@OneToMany(mappedBy="carrinho")
-	private List<ItemCarrinho> itens; 
+	@OneToMany(mappedBy="carrinho", cascade = CascadeType.PERSIST)
+	private List<ItemCarrinho> itens = new ArrayList<>(); 
+	
+	public void addItem(ItemCarrinho item) {
+		//adiciona o item na lista
+		itens.add(item);
+		
+		//adiciona o carrinho no item
+		item.setCarrinho(this);
+		
+	}
 
-	@OneToOne
+	//fetch -> configura o momento que será carregado a relação
+	//cascade -> executa a ação configurada na relação
+	@OneToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cd_cliente", nullable = false)
 	private Cliente cliente;
 
@@ -42,5 +56,56 @@ public class CarrinhoCompras {
 
 	@Column(name = "vl_total", nullable = false)
 	private double valorTotal;
+	
+	public CarrinhoCompras(Cliente cliente, double valorTotal) {
+		super();
+		this.cliente = cliente;
+		this.valorTotal = valorTotal;
+	}
 
+	public CarrinhoCompras() {
+		super();
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public List<ItemCarrinho> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<ItemCarrinho> itens) {
+		this.itens = itens;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Calendar getData() {
+		return data;
+	}
+
+	public void setData(Calendar data) {
+		this.data = data;
+	}
+
+	public double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	
 }

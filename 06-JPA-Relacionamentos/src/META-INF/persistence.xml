@@ -10,7 +10,7 @@
 				update -> alter table/ create
 				validate -> valida os objetos e o banco
 			 -->
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect"/>
 			<property name="javax.persistence.jdbc.user" value="PF0392"/>
 			<property name="javax.persistence.jdbc.password" value="EDF452"/>

@@ -28,5 +28,47 @@ public class Cliente {
 
 	@Column(name = "nr_cpf", length = 11)
 	private String cpf;
+	
+	public Cliente(String nome, String cpf) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+	}
+
+	public Cliente() {
+		super();
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public CarrinhoCompras getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(CarrinhoCompras carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 }

@@ -30,4 +30,36 @@ public class Produto {
 	@Column(name = "vl_produto", nullable = false)
 	private double valor;
 
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public List<ItemCarrinho> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<ItemCarrinho> itens) {
+		this.itens = itens;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
 }

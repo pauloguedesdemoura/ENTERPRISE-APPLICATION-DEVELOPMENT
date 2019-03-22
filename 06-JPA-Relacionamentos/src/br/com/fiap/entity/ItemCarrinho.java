@@ -34,4 +34,44 @@ public class ItemCarrinho {
 	@Column(name = "vl_item")
 	private double valor;
 
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public CarrinhoCompras getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(CarrinhoCompras carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
 }
