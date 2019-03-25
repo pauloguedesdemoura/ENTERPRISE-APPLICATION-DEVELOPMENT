@@ -1,12 +1,17 @@
 package br.com.fiap.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "T_FORNECEDOR")
@@ -23,6 +28,30 @@ public class Fornecedor {
 
 	@Column(name = "nr_cnpj", length = 18)
 	private String cnpj;
+
+	public Fornecedor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Fornecedor(String nome, String cnpj) {
+		super();
+		this.nome = nome;
+		this.cnpj = cnpj;
+	}
+
+
+	@ManyToMany(mappedBy="fornecedores")
+	private List<Produto> Produto;
+	
+	public List<Produto> getProduto() {
+		return Produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		Produto = produto;
+	}
 
 	public int getCodigo() {
 		return codigo;
